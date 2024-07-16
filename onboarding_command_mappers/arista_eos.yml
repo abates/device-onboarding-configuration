@@ -2,19 +2,19 @@
 sync_devices:
   hostname:
     commands:
-      command: "show hostname"
-      parser: "textfsm"
-      jpath: "[*].hostname"
+      - command: "show hostname"
+        parser: "textfsm"
+        jpath: "[*].hostname"
   serial:
     commands:
       - command: "show version | json"
         parser: "none"
-        jpath: "serialNumber"
+        jpath: "[*].serialNumber"
   device_type:
     commands:
       - command: "show version | json"
         parser: "none"
-        jpath: "modelName"
+        jpath: "[*].modelName"
   mgmt_interface:
     commands:
       - command: "show ip interface brief | json"
@@ -38,7 +38,7 @@ sync_network_data:
     commands:
       - command: "show version | json"
         parser: "none"
-        jpath: "serialNumber"
+        jpath: "[*].serialNumber"
   interfaces:
     root_key: true
     commands:
